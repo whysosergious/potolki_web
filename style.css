@@ -73,6 +73,7 @@ p {
     transition: all 0.3s ease;
     border: 2px solid transparent;
     margin-top: 1.5rem; /* Added margin-top for spacing after other elements */
+    text-shadow: none;
 }
 
 .btn-primary {
