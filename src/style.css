@@ -265,7 +265,7 @@ p {
 }
 
 .mobile-menu-phone {
-  margin-top: 2rem;
+  margin: auto auto 2rem;
 }
 
 .mobile-menu-phone a {
@@ -925,6 +925,8 @@ p {
 }
 
 .hero-subpage {
+  display: flex;
+  justify-content: center;
   min-height: 400px; /* Minimum height for subpage heroes */
   padding-top: 150px; /* Adjust as needed for header clearance and content */
   padding-bottom: 50px; /* Adjust for bottom spacing */
@@ -939,9 +941,12 @@ p {
     background-attachment: scroll; /* Disable fixed attachment on mobile */
     min-height: 80vh; /* Adjust height for mobile */
   }
+  .hero-subpage {
+    min-height: auto;
+  }
 }
 
 .hero-content,
 .section-overlay {
-  margin: 1rem auto;
+  margin: 1rem;
 }
