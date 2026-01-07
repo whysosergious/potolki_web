@@ -343,6 +343,7 @@ p {
   border-radius: 12px; /* Softer corners */
   max-width: 900px;
   margin: 0 auto;
+  text-align: center; /* Added for centering text within the hero-content */
 }
 
 .hero-content h1 {
@@ -663,7 +664,16 @@ p {
   color: #555;
 }
 
-/* Contact Section */
+.container pre {
+  white-space: pre-wrap; /* Allows text to wrap */
+  word-wrap: break-word; /* Breaks long words */
+  overflow-x: auto; /* Adds horizontal scroll for very long unbreakable lines */
+  background-color: #f8f8f8; /* Light background for readability */
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  color: #333;
+}
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -914,17 +924,24 @@ p {
   }
 }
 
+.hero-subpage {
+  min-height: 400px; /* Minimum height for subpage heroes */
+  padding-top: 150px; /* Adjust as needed for header clearance and content */
+  padding-bottom: 50px; /* Adjust for bottom spacing */
+  height: auto; /* Allow height to adjust to content */
+}
+
 /* Specific overrides for parallax background-attachment on mobile */
 /* Fixed background-attachment can cause issues on some mobile browsers */
 @media (max-width: 767px) {
   .parallax-hero,
   .parallax-section {
+    background-attachment: scroll; /* Disable fixed attachment on mobile */
     min-height: 80vh; /* Adjust height for mobile */
   }
 }
 
 .hero-content,
 .section-overlay {
-  margin: 1rem;
+  margin: 1rem auto;
 }
-
