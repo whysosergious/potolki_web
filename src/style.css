@@ -23,11 +23,12 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; /* Prevent horizontal scroll from parallax */
+  height: 100%; /* Ensure body fills the viewport */
 }
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 .container {
@@ -327,23 +328,22 @@ p {
   justify-content: center;
   color: var(--text-color-light);
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7); /* Stronger text shadow for readability */
-  background-color: #3f51b5; /* Fallback */
 }
 
 .parallax-hero {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Critical for parallax */
+  position: relative; /* Needed for absolute positioning of child img */
+  overflow: hidden; /* Hide overflowing background image parts */
 }
 
 .hero-content {
   background-color: rgba(0, 0, 0, 0.65); /* Slightly darker overlay */
-  padding: 3rem; /* More padding */
+  padding: 3rem; /* Reverted padding */
   border-radius: 12px; /* Softer corners */
   max-width: 900px;
   margin: 0 auto;
   text-align: center; /* Added for centering text within the hero-content */
+  position: relative; /* Ensure z-index works */
+  z-index: 1; /* Place above the background image */
 }
 
 .hero-content h1 {
@@ -446,25 +446,29 @@ p {
 
 /* Parallax Sections General */
 .parallax-section {
-  position: relative;
+  position: relative; /* Needed for absolute positioning of child img */
   min-height: 100vh; /* Ensure enough height for effect */
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-color-light);
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Critical for parallax */
+  overflow: hidden; /* Hide overflowing background image parts */
 }
 
 .section-overlay {
   background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
-  padding: 3rem;
+  padding: 3rem; /* Reverted padding */
   border-radius: 12px;
   max-width: 1000px;
   margin: 0 auto;
+  position: relative; /* Ensure z-index works */
+  z-index: 1; /* Place above the background image */
+}
+
+.hero-content,
+.section-overlay {
+  margin: 6rem 1rem;
 }
 
 .parallax-section h2 {
@@ -477,6 +481,22 @@ p {
   font-size: 1.3rem;
   margin-bottom: 2.5rem;
   color: var(--text-color-light);
+}
+
+.parallax-section.bg-dark,
+.parallax-section.bg-secondary {
+  background-color: transparent;
+}
+
+.parallax-bg-image {
+  position: absolute;
+  top: -10%; /* Vertically center the oversized image */
+  left: 0;
+  width: 100%;
+  height: 120%; /* Make image taller to allow for vertical movement */
+  object-fit: cover;
+  z-index: -1; /* Place behind content */
+  will-change: transform; /* Hint to browser for performance */
 }
 
 /* Advantages Grid */
@@ -854,6 +874,12 @@ p {
   h3 {
     font-size: 1.4rem;
   }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .parallax-section h2 {
+    font-size: 2rem;
+  }
   p {
     font-size: 1rem;
   }
@@ -935,17 +961,15 @@ p {
 
 /* Specific overrides for parallax background-attachment on mobile */
 /* Fixed background-attachment can cause issues on some mobile browsers */
+
 @media (max-width: 767px) {
   .parallax-hero,
   .parallax-section {
-    min-height: 80%; /* Adjust height for mobile */
+    min-height: calc(
+      var(--vh, 1vh) * 80
+    ); /* Adjust height for mobile, using stable vh */
   }
   .hero-subpage {
     min-height: auto;
   }
-}
-
-.hero-content,
-.section-overlay {
-  margin: 1rem;
 }
