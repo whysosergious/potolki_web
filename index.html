@@ -35,11 +35,20 @@
             </button>
         </nav>
         <div id="mobile-menu" class="mobile-menu-overlay">
+            <button id="close-menu-button" class="menu-toggle-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
             <a href="#about" class="mobile-menu-item">О нас</a>
             <a href="#advantages" class="mobile-menu-item">Преимущества</a>
             <a href="#catalog" class="mobile-menu-item">Каталог</a>
             <a href="#portfolio" class="mobile-menu-item">Портфолио</a>
             <a href="#contact" class="mobile-menu-item">Контакты</a>
+            <div class="mobile-menu-phone">
+                <a href="tel:+79992041130">+7 (999) 204-11-30</a>
+            </div>
         </div>
     </header>
 
@@ -326,8 +335,8 @@
                 <div class="contact-info">
                     <h3>Наши Контакты</h3>
                     <p><strong>Адрес:</strong> г. Санкт-Петербург</p>
-                    <p><strong>Телефон:</strong> +79992041130, +79992041130</p>
-                    <p><strong>Email:</strong> <a href="mailto:zakaz@potolki-marmaks.ru">zakaz@potolki-marmaks.ru</a></p>
+                    <p><strong>Телефон:</strong> +79992041130</p>
+                    <p><strong>Email:</strong> <a href="mailto:xxxx@xx.xx">xxxx@xx.xx</a></p>
                                             </div>
                 <div class="contact-form">
                     <h3>Отправьте Нам Сообщение</h3>
@@ -368,11 +377,17 @@
 
         // Mobile menu toggle
         const menuButton = document.getElementById('menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         if (menuButton && mobileMenu) {
             menuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('active'); // Use 'active' class for visibility
+                mobileMenu.classList.add('active'); // Use 'add' to ensure it's visible
             });
+
+            closeMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+
             // Close menu when a link is clicked
             mobileMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
@@ -381,6 +396,18 @@
             });
         }
         
+        // Parallax effect for mobile
+        if (window.innerWidth <= 767) {
+            const parallaxSections = document.querySelectorAll('.parallax-hero, .parallax-section');
+            window.addEventListener('scroll', () => {
+                parallaxSections.forEach(section => {
+                    const speed = -0.2; // Adjust parallax speed
+                    const yPos = window.pageYOffset - section.offsetTop;
+                    const yPosWithSpeed = yPos * speed;
+                    section.style.backgroundPosition = `center ${yPosWithSpeed}px`;
+                });
+            });
+        }
     </script>
 </body>
 </html>

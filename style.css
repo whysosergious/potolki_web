@@ -12,6 +12,10 @@
   --shadow-light: rgba(0, 0, 0, 0.1);
 }
 
+* {
+  box-sizing: border-box; /* Global box-sizing for consistent layout */
+}
+
 body {
   font-family: "Roboto", "Arial", sans-serif;
   color: var(--text-color-dark);
@@ -147,7 +151,7 @@ p {
 }
 
 .navigation {
-  display: flex;
+  display: flex; /* Default to flex for mobile */
   justify-content: space-between;
   align-items: center;
 }
@@ -166,10 +170,6 @@ p {
   justify-content: center;
 }
 
-/* .header-logo-group .logo { */
-/*   margin-bottom: 0.2rem; */
-/* } */
-
 .tagline-text {
   font-size: 0.9rem; /* Smaller font size for the tagline */
   color: var(--text-color-dark); /* Match other text color */
@@ -177,16 +177,7 @@ p {
   margin-bottom: 0;
 }
 
-@media (max-width: 767px) {
-  /* Mobile styles */
-  .header-logo-group {
-    align-items: center; /* Center align on mobile */
-  }
-  .tagline-text {
-    font-size: 0.75rem; /* Even smaller on mobile */
-  }
-}
-
+/* Desktop Navigation Links */
 .nav-links-desktop {
   display: none; /* Hidden on mobile by default */
 }
@@ -194,16 +185,31 @@ p {
 .nav-links-desktop a {
   color: var(--text-color-dark);
   text-decoration: none;
-  margin-left: 2.5rem; /* Increased spacing */
+  margin: 0 1rem; /* Adjust spacing between links */
   font-weight: 500;
   font-size: 1.1rem;
   transition: color 0.3s ease;
+  white-space: nowrap; /* Prevent links from wrapping */
 }
 
 .nav-links-desktop a:hover {
   color: var(--primary-color);
 }
 
+/* Header Phone Number */
+.header-phone {
+  display: none; /* Hidden on mobile by default */
+}
+
+.header-phone a {
+  color: #3f51b5;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+  white-space: nowrap; /* Prevent phone number from wrapping */
+}
+
+/* Mobile Menu Button (Hamburger) */
 .menu-toggle-button {
   background: none;
   border: none;
@@ -252,16 +258,62 @@ p {
   color: var(--primary-color);
 }
 
-/* Hide desktop nav on mobile and show menu button */
-@media (min-width: 768px) {
+#close-menu-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.mobile-menu-phone {
+  margin-top: 2rem;
+}
+
+.mobile-menu-phone a {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Desktop styles (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .navigation {
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Logo, nav, phone */
+    gap: 1rem;
+    align-items: center;
+  }
+
   .nav-links-desktop {
-    display: flex;
+    display: flex; /* Show desktop nav links */
+    justify-content: center; /* Center the links within their grid column */
+    flex-grow: 1; /* Allow nav links to take available space */
+  }
+
+  .header-phone {
+    display: block; /* Show phone number */
+    margin-left: auto; /* Push phone number to the right */
+  }
+
+  .menu-toggle-button {
+    display: none; /* Hide hamburger menu on desktop */
+  }
+
+  .mobile-menu-overlay {
+    display: none !important; /* Hide mobile menu on desktop */
+  }
+}
+
+/* Tablet and smaller desktop adjustments (max-width: 1023px) */
+@media (max-width: 1023px) {
+  .nav-links-desktop {
+    display: none; /* Hide desktop nav links on smaller screens */
+  }
+  .header-phone {
+    display: none; /* Hide phone number on smaller screens */
   }
   .menu-toggle-button {
-    display: none;
-  }
-  .mobile-menu-overlay {
-    display: none !important;
+    display: block; /* Show hamburger menu button */
   }
 }
 
@@ -394,7 +446,7 @@ p {
 /* Parallax Sections General */
 .parallax-section {
   position: relative;
-  min-height: 550px; /* Ensure enough height for effect */
+  min-height: 100vh; /* Ensure enough height for effect */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -654,6 +706,7 @@ p {
 
 .social-links {
   display: flex;
+  justify-content: center;
   gap: 1.2rem;
   margin-top: 1.8rem;
 }
@@ -866,6 +919,12 @@ p {
 @media (max-width: 767px) {
   .parallax-hero,
   .parallax-section {
-    background-attachment: scroll; /* Change to scroll on mobile */
+    min-height: 80vh; /* Adjust height for mobile */
   }
 }
+
+.hero-content,
+.section-overlay {
+  margin: 1rem;
+}
+
