@@ -938,7 +938,7 @@ p {
 @media (max-width: 767px) {
   .parallax-hero,
   .parallax-section {
-    min-height: 80vh; /* Adjust height for mobile */
+    min-height: 80%; /* Adjust height for mobile */
   }
   .hero-subpage {
     min-height: auto;
