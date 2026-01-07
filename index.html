@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Фабрика НП - Изысканные Натяжные Потолки в СПб</title>
-    <link href="style.css" rel="stylesheet">
+    <link href="./src/style.css" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -336,17 +336,17 @@
                     <h3>Наши Контакты</h3>
                     <p><strong>Адрес:</strong> г. Санкт-Петербург</p>
                     <p><strong>Телефон:</strong> +79992041130</p>
-                    <p><strong>Email:</strong> <a href="mailto:xxxx@xx.xx">xxxx@xx.xx</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@fabrikanp.ru">info@fabrikanp.ru</a></p>
                                             </div>
                 <div class="contact-form">
                     <h3>Отправьте Нам Сообщение</h3>
-                    <form action="#" method="POST">
+                    <form action="https://formspree.io/f/YOUR_EMAIL_HERE" method="POST">
                         <input type="text" id="name" name="name" placeholder="Ваше Имя" required>
                         <input type="tel" id="phone" name="phone" placeholder="Ваш Телефон" required>
                         <textarea id="message" name="message" rows="4" placeholder="Ваше Сообщение (Необязательно)"></textarea>
                         <div class="privacy-checkbox">
                             <input type="checkbox" id="privacy" name="privacy" required>
-                            <label for="privacy">Я согласен с <a href="oferta.html" target="_blank">Политикой конфиденциальности</a></label>
+                            <label for="privacy">Я согласен с <a href="privacy-policy.html" target="_blank">Политикой конфиденциальности</a></label>
                         </div>
                         <button type="submit" class="btn btn-primary">Отправить Заявку</button>
                     </form>
@@ -364,50 +364,6 @@
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Mobile menu toggle
-        const menuButton = document.getElementById('menu-button');
-        const closeMenuButton = document.getElementById('close-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (menuButton && mobileMenu) {
-            menuButton.addEventListener('click', () => {
-                mobileMenu.classList.add('active'); // Use 'add' to ensure it's visible
-            });
-
-            closeMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-
-            // Close menu when a link is clicked
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('active');
-                });
-            });
-        }
-        
-        // Parallax effect for mobile
-        if (window.innerWidth <= 767) {
-            const parallaxSections = document.querySelectorAll('.parallax-hero, .parallax-section');
-            window.addEventListener('scroll', () => {
-                parallaxSections.forEach(section => {
-                    const speed = -0.2; // Adjust parallax speed
-                    const yPos = window.pageYOffset - section.offsetTop;
-                    const yPosWithSpeed = yPos * speed;
-                    section.style.backgroundPosition = `center ${yPosWithSpeed}px`;
-                });
-            });
-        }
-    </script>
+    <script src="./src/main.js"></script>
 </body>
 </html>
