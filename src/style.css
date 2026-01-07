@@ -938,7 +938,6 @@ p {
 @media (max-width: 767px) {
   .parallax-hero,
   .parallax-section {
-    background-attachment: scroll; /* Disable fixed attachment on mobile */
     min-height: 80vh; /* Adjust height for mobile */
   }
   .hero-subpage {

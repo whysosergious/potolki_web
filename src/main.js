@@ -35,7 +35,7 @@ const parallaxSections = document.querySelectorAll(
 );
 window.addEventListener("scroll", () => {
   parallaxSections.forEach((section) => {
-    const speed = -0.2; // Adjust parallax speed
+    const speed = -0.3; // Adjust parallax speed
     const yPos = window.pageYOffset - section.offsetTop;
     const yPosWithSpeed = yPos * speed;
     section.style.backgroundPosition = `center ${yPosWithSpeed}px`;
