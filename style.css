@@ -614,15 +614,16 @@ p {
 /* Contact Section */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: 1fr;
   gap: 3.5rem;
   margin-top: 3.5rem;
+  text-align: left;
 }
 
 @media (min-width: 1024px) {
   /* lg */
   .contact-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 2fr;
   }
 }
 
@@ -631,6 +632,7 @@ p {
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .contact-info p {
