@@ -1,7 +1,7 @@
 // Function to set the CSS variable for stable viewport height
 function setStableViewportHeight() {
   const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
 }
 
 // Set on initial load
@@ -9,11 +9,10 @@ setStableViewportHeight();
 
 // Set on resize (with a debounce for performance)
 let resizeTimeout;
-window.addEventListener('resize', () => {
+window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(setStableViewportHeight, 100);
 });
-
 
 // Smooth scrolling for navigation
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -88,4 +87,3 @@ const applyParallax = () => {
 window.addEventListener("scroll", applyParallax);
 window.addEventListener("resize", applyParallax); // Re-apply on resize
 document.addEventListener("DOMContentLoaded", applyParallax); // Apply on initial load
-
