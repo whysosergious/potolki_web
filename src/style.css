@@ -74,12 +74,12 @@ h1 {
   color: var(--text-color-light);
 } /* Hero H1 */
 h2 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   line-height: 1.3;
   color: var(--text-color-dark);
 } /* Section Titles */
 h3 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   line-height: 1.4;
   color: var(--text-color-dark);
 } /* Subtitles/Card Titles */
@@ -711,7 +711,8 @@ p {
 
 .contact-info h3,
 .contact-form h3 {
-  font-size: 1.8rem;
+  color: white;
+  font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
   text-align: center;

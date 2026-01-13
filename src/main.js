@@ -1,6 +1,6 @@
 // Function to set the CSS variable for stable viewport height
 function setStableViewportHeight() {
-  const vh = window.innerHeight * 0.01;
+  const vh = globalThis.innerHeight * 0.01;
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 }
 
@@ -9,7 +9,7 @@ setStableViewportHeight();
 
 // Set on resize (with a debounce for performance)
 let resizeTimeout;
-window.addEventListener("resize", () => {
+globalThis.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(setStableViewportHeight, 100);
 });
@@ -54,14 +54,14 @@ const applyParallax = () => {
     const section = img.closest("section");
     if (!section) return;
 
-    const viewportHeight = window.innerHeight;
-    const scrollY = window.pageYOffset;
+    const viewportHeight = globalThis.innerHeight;
+    const scrollY = globalThis.pageYOffset;
     const sectionTop = section.offsetTop;
     const sectionHeight = section.offsetHeight;
 
     // Check if the section is in view
     // Adjust the offset to start parallax earlier/later
-    const parallaxOffset = 0.5; // Controls when the parallax starts/stops relative to section visibility
+    const _parallaxOffset = 0.5; // Controls when the parallax starts/stops relative to section visibility
 
     const sectionInView =
       sectionTop < scrollY + viewportHeight &&
@@ -69,7 +69,7 @@ const applyParallax = () => {
 
     if (sectionInView) {
       const speed = 0.3; // Adjust parallax speed (0.1 to 0.5 usually works well)
-      const scrollY = window.pageYOffset;
+      const scrollY = globalThis.pageYOffset;
       const sectionTop = section.offsetTop;
 
       // Calculate yOffset such that it moves with the scroll but slower.
@@ -84,6 +84,6 @@ const applyParallax = () => {
   });
 };
 
-window.addEventListener("scroll", applyParallax);
-window.addEventListener("resize", applyParallax); // Re-apply on resize
+globalThis.addEventListener("scroll", applyParallax);
+globalThis.addEventListener("resize", applyParallax); // Re-apply on resize
 document.addEventListener("DOMContentLoaded", applyParallax); // Apply on initial load
